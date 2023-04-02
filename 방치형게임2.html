@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>방치형게임2</title>
+        <style type = "text/css">
+            #canvas_container { width:100%; text-align:center; border:1px solid black;}
+            canvas {border:1px solid black; display:inline;}
+            .none {display:none;}
+        </style>
+    </head>
+
+    <body>
+        <div id="canvas_container">
+            <h2>방치형게임2</h2>
+
+            <div id="loginsystem">
+                <span>닉네임 : </span><input id="id" type="text"></input> <br>
+                <span>비밀번호 : </span><input id="pw" type="text"></input> <br>
+                <button id="login" width="200px">로그인</button> <br>
+                <button id="regist" width="200px">회원가입</button> <br>
+            </div>
+            <div id="jobsystem" class="none">
+                <h3>직업선택</h3>
+                <button id="job1">군인</button><span>특수능력이 없습니다.</span><br>
+                <button id="job2">전사</button><span>최종데미지 +10%</span><br>
+                <button id="job3">궁수</button><span>초과된 치명타 확률이 치명타 피해배율로 전환</span><br>
+                <button id="job4">도적</button><span>방어력관통 +10</span><br>
+                <button id="job5">마법사</button><span>옵션희귀도 증가량 +10%</span><br>
+            </div>
+            <canvas id="canvas" width="1280px" height="720px" class="none"></canvas>
+            <p>made by 라이어게임즈</p>
+        </div>
+        <script src="scripts/load_sprites.js"></script>
+        <script src="scripts/save.js"></script>
+        <script src="scripts/random.js"></script>
+        <script src="scripts/game.js"></script>
+        <script>
+            const $login = document.querySelector('#login');
+            const $regist = document.querySelector('#regist');
+            const $id = document.querySelector('#id');
+            const $pw = document.querySelector('#pw');
+            const $loginsystem = document.querySelector('#loginsystem');
+            const $jobsystem = document.querySelector('#jobsystem');
+            const $jobbut1 = document.querySelector('#job1');
+            const $jobbut2 = document.querySelector('#job2');
+            const $jobbut3 = document.querySelector('#job3');
+            const $jobbut4 = document.querySelector('#job4');
+            const $jobbut5 = document.querySelector('#job5');
+
+            let id="ERR";
+            let pw="ERR";
+
+            $id.addEventListener('input',(event)=>{id=event.target.value;});
+            $pw.addEventListener('input',(event)=>{pw=event.target.value;});
+
+            let userdata = localLoad('userdata');
+            if(userdata==-1)
+            {
+                localSave('userdata',{'userdata':'qwe123'});
+                userdata = localLoad('userdata');
+            }
+
+            $regist.addEventListener('click',()=>{
+                if(userdata[id]===undefined)
+                {
+                    userdata[id]=pw;
+                    localSave('userdata',userdata);
+                    $loginsystem.classList.add('none');
+                    $jobsystem.classList.remove('none');
+                }
+                else
+                    alert('이미 사용중인 닉네임입니다');
+            });
+
+            $jobbut1.addEventListener('click',()=>{
+                data.id=id; data.pw=pw; data.job=1;
+                localSave('userdata',userdata); localSave(id,data);
+                canvas.classList.remove('none'); $jobsystem.classList.add('none');
+                statcal(); diffcal(); calrarep(data.opr/100);
+                const IntervalId = setInterval(game,1000/FPS);
+            });
+            $jobbut2.addEventListener('click',()=>{
+                data.id=id; data.pw=pw; data.job=2;
+                localSave('userdata',userdata); localSave(id,data);
+                canvas.classList.remove('none'); $jobsystem.classList.add('none');
+                statcal(); diffcal(); calrarep(data.opr/100);
+                const IntervalId = setInterval(game,1000/FPS);
+            });
+            $jobbut3.addEventListener('click',()=>{
+                data.id=id; data.pw=pw; data.job=3;
+                localSave('userdata',userdata); localSave(id,data);
+                canvas.classList.remove('none'); $jobsystem.classList.add('none');
+                statcal(); diffcal(); calrarep(data.opr/100);
+                const IntervalId = setInterval(game,1000/FPS);
+            });
+            $jobbut4.addEventListener('click',()=>{
+                data.id=id; data.pw=pw; data.job=4;
+                localSave('userdata',userdata); localSave(id,data);
+                canvas.classList.remove('none'); $jobsystem.classList.add('none');
+                statcal(); diffcal(); calrarep(data.opr/100);
+                const IntervalId = setInterval(game,1000/FPS);
+            });
+            $jobbut5.addEventListener('click',()=>{
+                data.id=id; data.pw=pw; data.job=5;
+                localSave('userdata',userdata); localSave(id,data);
+                canvas.classList.remove('none'); $jobsystem.classList.add('none');
+                statcal(); diffcal(); calrarep(data.opr/100);
+                const IntervalId = setInterval(game,1000/FPS);
+            });
+
+            $login.addEventListener('click',()=>{
+                if(userdata[id]===undefined)
+                    alert('존재하지 않는 닉네임입니다.');
+                else
+                {
+                    if(userdata[id]===pw)
+                    {
+                        canvas.classList.remove('none');
+                        $loginsystem.classList.add('none');
+                        dataload(id);
+                        statcal();
+                        diffcal();
+                        calrarep(data.opr/100);
+                        const IntervalID=setInterval(game,1000/FPS);
+                    }
+                    else
+                        alert('비밀번호가 다릅니다');
+                }
+            });
+        </script>
+    </body>
+</html>

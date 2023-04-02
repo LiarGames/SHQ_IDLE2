@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>랭킹</title>
+    </head>
+
+    <body>
+        <h2>랭킹</h2>
+
+        <script src="scripts/save.js"></script>
+        <script>
+            const {body} = document;
+            let userdata = localLoad('userdata');
+
+            let str = JSON.stringify('userdata');
+            let arr = Array.from(str);
+            arr.splice(arr.length-1);
+            arr.splice(0,1);
+            str = arr.join('');
+            arr = str.split(',');
+            let arrsort = []
+            for(let i=0; i<arr.length; i++)
+            {
+                let a = arr[i].split(':');
+                let aa = a[0];
+                aa = Array.from(aa);
+                aa.splice(aa.length-1);
+                aa.splice(0,1);
+                let aaa = aa.join('');
+                let data = localLoad(aaa);
+                let $li = document.createElement('li');
+                let job = '';
+                switch(data.job)
+                {
+                    case 1: job='군인'; break;
+                    case 2: job='전사'; break;
+                    case 3: job='궁수'; break;
+                    case 4: job='도적'; break;
+                    case 5: job='마법사'; break;
+                }
+                $li.textContent = aaa + '(LV' + data.lv + ' ' + job + ' )';
+                body.appendChild($li);
+            }
+        </script>
+    </body>
+</html>

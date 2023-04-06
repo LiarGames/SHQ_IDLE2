@@ -1567,6 +1567,9 @@ function draw()
         ctx.drawImage(spr_fire1,208,240);
         ctx.drawImage(spr_fire2,208+288,240);
         ctx.drawImage(spr_fire3,208+576,240);
+        ctx.strokeRect(208,240,128,128);
+        ctx.strokeRect(208+288,240,128,128);
+        ctx.strokeRect(208+576,240,128,128);
 
         ctx.fillStyle = "rgba(0,0,0,0.5)";
         ctx.fillRect(208,240+128*data.sk1/216000,128,128*(216000-data.sk1)/216000);

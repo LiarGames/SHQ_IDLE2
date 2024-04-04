@@ -226,21 +226,21 @@ function statcal()
      stat.atks += data.chu4[0]*100;
      stat.crds += data.chu4[1]*20;
      stat.dep += data.chu4[2];
-     stat.atts += data.chu4[3]*4;
+     stat.atss += data.chu4[3]*4;
      stat.spds += data.chu4[4]*4;
      stat.mods += data.chu4[5]*100;
      
      stat.atks += data.chu5[0]*100;
      stat.crds += data.chu5[1]*20;
      stat.dep += data.chu5[2];
-     stat.atts += data.chu5[3]*4;
+     stat.atss += data.chu5[3]*4;
      stat.spds += data.chu5[4]*4;
      stat.mods += data.chu5[5]*100;
      
      stat.atks += data.chu6[0]*100;
      stat.crds += data.chu6[1]*20;
      stat.dep += data.chu6[2];
-     stat.atts += data.chu6[3]*4;
+     stat.atss += data.chu6[3]*4;
      stat.spds += data.chu6[4]*4;
      stat.mods += data.chu6[5]*100;
 
